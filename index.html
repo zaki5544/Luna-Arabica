@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>💌 Untuk Luna Arabela</title>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --pink:#FF6B9D;--deep-pink:#E91E8C;--soft-pink:#FFD6E8;
+    --cream:#FFF5F9;--red:#FF4D6D;--purple:#C77DFF;
+    --yellow:#FFE566;--green:#06D6A0;--dark:#3D1A47;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Nunito',sans-serif;background:var(--cream);min-height:100vh;overflow-x:hidden;}
+  body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(circle,#ffb3d138 1.5px,transparent 1.5px);background-size:28px 28px;pointer-events:none;z-index:0;}
+
+  .bg-hearts{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;}
+  .bg-heart{position:absolute;animation:floatUp linear infinite;opacity:0;}
+  @keyframes floatUp{0%{transform:translateY(110vh) rotate(0deg);opacity:0;}10%{opacity:.55;}90%{opacity:.25;}100%{transform:translateY(-10vh) rotate(360deg);opacity:0;}}
+
+  .screen{display:none;position:relative;z-index:1;min-height:100vh;padding:16px;flex-direction:column;align-items:center;justify-content:center;text-align:center;}
+  .screen.active{display:flex;}
+
+  .card{background:white;border-radius:32px;padding:28px 24px 24px;box-shadow:0 20px 60px rgba(255,107,157,.22),0 4px 15px rgba(255,107,157,.1);max-width:440px;width:100%;position:relative;border:2.5px solid var(--soft-pink);animation:cardIn .55s cubic-bezier(0.34,1.56,0.64,1);}
+  @keyframes cardIn{from{transform:scale(.5) rotate(-6deg);opacity:0;}to{transform:scale(1) rotate(0deg);opacity:1;}}
+
+  /* NAILONG ANIMATIONS */
+  .nl-float{animation:nlFloat 2.6s ease-in-out infinite;}
+  @keyframes nlFloat{0%,100%{transform:translateY(0) rotate(-2deg);}50%{transform:translateY(-11px) rotate(2deg);}}
+  .nl-dance{animation:nlDance 1.1s ease-in-out infinite;}
+  @keyframes nlDance{0%,100%{transform:rotate(-7deg) scale(1);}25%{transform:rotate(7deg) scale(1.07);}50%{transform:rotate(-7deg) scale(1);}75%{transform:rotate(7deg) scale(1.07);}}
+  .nl-bounce{animation:nlBounce 1.8s ease-in-out infinite;}
+  @keyframes nlBounce{0%,100%{transform:translateY(0);}45%{transform:translateY(-14px);}65%{transform:translateY(-6px);}}
+  .nl-shake{animation:nlShake 0.5s ease-in-out infinite;}
+  @keyframes nlShake{0%,100%{transform:translateX(0);}25%{transform:translateX(-5px);}75%{transform:translateX(5px);}}
+  .nl-wrap{cursor:pointer;display:inline-block;-webkit-tap-highlight-color:transparent;filter:drop-shadow(0 6px 12px rgba(255,200,0,.3));}
+  .nl-wrap:active svg{transform:scale(1.25) rotate(8deg);transition:transform .25s cubic-bezier(0.34,1.56,0.64,1);}
+
+  /* STICKERS */
+  .sticker{display:inline-block;font-size:2.4rem;filter:drop-shadow(0 3px 6px rgba(0,0,0,.15));animation:stickerWiggle 2s ease-in-out infinite;cursor:pointer;user-select:none;-webkit-tap-highlight-color:transparent;}
+  @keyframes stickerWiggle{0%,100%{transform:rotate(-5deg) scale(1);}50%{transform:rotate(5deg) scale(1.06);}}
+  .sticker-naylon{display:inline-flex;align-items:center;gap:5px;background:linear-gradient(135deg,#fff,#ffe4f0);border:2.5px solid var(--pink);border-radius:50px;padding:8px 18px;font-size:.87rem;font-weight:800;color:var(--deep-pink);box-shadow:0 4px 12px rgba(255,107,157,.25),inset 0 1px 3px rgba(255,255,255,.9);margin:4px;cursor:pointer;-webkit-tap-highlight-color:transparent;position:relative;overflow:hidden;transition:transform .15s;}
+  .sticker-naylon::after{content:'';position:absolute;top:0;left:-100%;width:60%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.55),transparent);transform:skewX(-20deg);transition:left .4s;}
+  .sticker-naylon:hover::after,.sticker-naylon:active::after{left:160%;}
+  .sticker-naylon:active{transform:scale(.92);}
+  .naylon-pack{background:linear-gradient(135deg,#fff6fb,#ffe4f0);border:2px dashed var(--pink);border-radius:22px;padding:18px 14px 14px;margin:14px 0;position:relative;}
+  .naylon-pack::before{content:"✨ Stiker Nailon";position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--deep-pink);color:white;font-size:.72rem;font-weight:800;padding:3px 14px;border-radius:20px;white-space:nowrap;letter-spacing:.5px;}
+  .sticker-badge{display:inline-block;background:linear-gradient(135deg,var(--pink),var(--deep-pink));color:white;padding:7px 18px;border-radius:20px;font-size:.82rem;font-weight:800;box-shadow:0 4px 14px rgba(255,107,157,.4),inset 0 -3px 0 rgba(0,0,0,.12);transform:rotate(-2deg);letter-spacing:.4px;border:2px solid rgba(255,255,255,.35);}
+
+  h1{font-family:'Dancing Script',cursive;font-size:clamp(1.9rem,8vw,3.4rem);color:var(--deep-pink);line-height:1.2;margin-bottom:6px;}
+  h2{font-family:'Dancing Script',cursive;font-size:clamp(1.4rem,6vw,2.1rem);color:var(--dark);margin-bottom:14px;}
+  .subtitle{color:#999;font-size:.9rem;margin-bottom:18px;line-height:1.6;}
+  .love-text{font-family:'Dancing Script',cursive;font-size:clamp(1rem,3.8vw,1.3rem);color:var(--dark);line-height:1.8;background:linear-gradient(135deg,var(--cream),#fff6fb);border-radius:16px;padding:14px 18px;margin:10px 0;border-left:4px solid var(--pink);text-align:left;}
+
+  .btn{display:inline-block;padding:14px 30px;border-radius:50px;border:none;font-family:'Nunito',sans-serif;font-weight:800;font-size:.97rem;cursor:pointer;transition:transform .2s;-webkit-tap-highlight-color:transparent;touch-action:manipulation;user-select:none;}
+  .btn-pink{background:linear-gradient(135deg,var(--pink),var(--deep-pink));color:white;box-shadow:0 6px 18px rgba(255,107,157,.4);}
+  .btn-pink:active{transform:scale(.94);}
+  .btn-outline{background:white;color:var(--pink);border:2.5px solid var(--pink);}
+  .btn-outline:active{transform:scale(.94);}
+  .btn-yes{background:linear-gradient(135deg,#FF6BAE,#E91E8C);color:white;padding:15px 36px;font-size:1.05rem;box-shadow:0 6px 22px rgba(233,30,140,.4);z-index:2;}
+  #btnNo{position:fixed;z-index:9999;background:linear-gradient(135deg,#bbb,#999);color:white;padding:12px 24px;font-size:.9rem;font-family:'Nunito',sans-serif;font-weight:800;border:none;border-radius:50px;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.2);white-space:nowrap;-webkit-tap-highlight-color:transparent;display:none;}
+
+  .progress-wrap{width:100%;background:var(--soft-pink);border-radius:10px;height:10px;margin-bottom:18px;overflow:hidden;}
+  .progress-fill{height:100%;background:linear-gradient(90deg,var(--pink),var(--deep-pink));border-radius:10px;transition:width .5s ease;}
+  .progress-label{font-size:.78rem;color:#bbb;margin-bottom:6px;font-weight:700;}
+  .question-num{font-size:.82rem;color:var(--pink);font-weight:800;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;}
+  .question-text{font-size:clamp(.97rem,3.8vw,1.2rem);font-weight:700;color:var(--dark);margin-bottom:22px;line-height:1.5;}
+  .answers-grid{display:grid;grid-template-columns:1fr 1fr;gap:11px;width:100%;margin-bottom:8px;}
+  .answer-btn{padding:13px 8px;border-radius:15px;border:2.5px solid var(--soft-pink);background:white;color:var(--dark);font-family:'Nunito',sans-serif;font-weight:700;font-size:.88rem;cursor:pointer;transition:all .18s;-webkit-tap-highlight-color:transparent;line-height:1.3;}
+  .answer-btn:active{background:var(--soft-pink);border-color:var(--pink);transform:scale(.96);}
+  .answer-btn.correct{background:#d8f5ef;border-color:var(--green);color:#00875A;}
+  .answer-btn.wrong{background:#ffe4ea;border-color:var(--red);color:var(--red);}
+
+  .score-circle{width:108px;height:108px;border-radius:50%;background:linear-gradient(135deg,var(--pink),var(--deep-pink));display:flex;flex-direction:column;align-items:center;justify-content:center;margin:0 auto 18px;color:white;font-weight:800;box-shadow:0 10px 30px rgba(255,107,157,.5);animation:pulseScore 1.8s ease-in-out infinite;}
+  .score-circle .num{font-size:2.4rem;line-height:1;}
+  .score-circle .lbl{font-size:.68rem;opacity:.85;}
+  @keyframes pulseScore{0%,100%{transform:scale(1);}50%{transform:scale(1.07);}}
+
+  .confetti-piece{position:fixed;top:-12px;pointer-events:none;z-index:9999;animation:confettiFall linear forwards;}
+  @keyframes confettiFall{0%{transform:translateY(0) rotate(0);opacity:1;}100%{transform:translateY(110vh) rotate(800deg);opacity:0;}}
+
+  .envelope{font-size:5rem;animation:envPulse 1.2s ease-in-out infinite;cursor:pointer;display:inline-block;filter:drop-shadow(0 8px 18px rgba(255,107,157,.45));-webkit-tap-highlight-color:transparent;}
+  @keyframes envPulse{0%,100%{transform:scale(1) rotate(-3deg);}50%{transform:scale(1.1) rotate(3deg);}}
+
+  .polaroid{background:white;padding:12px 12px 38px;border-radius:4px;box-shadow:0 10px 28px rgba(0,0,0,.13);transform:rotate(-2deg);margin:12px auto;max-width:200px;}
+  .polaroid-inner{width:100%;aspect-ratio:1;background:linear-gradient(135deg,var(--soft-pink),var(--cream));border-radius:2px;display:flex;align-items:center;justify-content:center;}
+  .polaroid-text{text-align:center;margin-top:8px;font-family:'Dancing Script',cursive;font-size:1.1rem;color:var(--dark);}
+
+  .feedback{font-size:.9rem;font-weight:700;padding:10px 16px;border-radius:12px;margin-top:8px;display:none;}
+  .feedback.show{display:block;animation:fadeInUp .3s ease;}
+  .feedback.correct{background:#d8f5ef;color:#00875A;}
+  .feedback.wrong{background:#ffe4ea;color:var(--red);}
+  @keyframes fadeInUp{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+  .q-emoji{font-size:2.8rem;margin-bottom:8px;animation:stickerWiggle 2s infinite;display:block;}
+
+  .doodle-c{position:absolute;pointer-events:none;}
+  .dc-tr{top:-20px;right:-10px;} .dc-tl{top:-20px;left:-10px;}
+  .dc-br{bottom:-20px;right:-10px;} .dc-bl{bottom:-20px;left:-10px;}
+  .stickers-row{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;margin:10px 0;}
+  .sparkle{position:fixed;pointer-events:none;animation:sparkleAnim .65s ease forwards;font-size:1.4rem;z-index:9999;}
+  @keyframes sparkleAnim{0%{transform:scale(0) rotate(0);opacity:1;}60%{transform:scale(1.4) rotate(200deg);opacity:1;}100%{transform:scale(0) rotate(360deg);opacity:0;}}
+  .love-q-wrap{position:relative;min-height:90px;width:100%;display:flex;align-items:center;justify-content:center;}
+  .final-msg{background:linear-gradient(135deg,#fff0f8,#fff5fb);border-radius:20px;padding:16px 18px;margin:12px 0;border:2px solid var(--soft-pink);}
+  @media(max-width:480px){.card{padding:22px 15px 20px;border-radius:26px;}.answers-grid{gap:9px;}}
+</style>
+</head>
+<body>
+<div class="bg-hearts" id="bgHearts"></div>
+
+<!-- =====================================================================
+     NAILONG SVG DEFINITIONS (accurate to reference image)
+     - Chubby round body, big glossy eyes with lashes, pink blush,
+       small orange beak, stubby wings, orange webbed feet
+     ===================================================================== -->
+
+<!-- TEMPLATE: base nailong inline, reused as SVG in each screen -->
+
+<!-- ===================== SCREEN 1 — INTRO ===================== -->
+<div class="screen active" id="screen1">
+  <div class="card">
+    <svg class="doodle-c dc-tr" width="72" height="72" viewBox="0 0 72 72">
+      <path d="M8 64 Q36 8 64 14" stroke="#FFB3D1" stroke-width="2.5" fill="none" stroke-dasharray="6 4" stroke-linecap="round"/>
+      <circle cx="64" cy="14" r="4" fill="#FF6B9D" opacity=".6"/>
+      <text x="3" y="70" font-size="20">🌸</text>
+    </svg>
+    <svg class="doodle-c dc-tl" width="72" height="72" viewBox="0 0 72 72">
+      <path d="M64 64 Q36 8 8 14" stroke="#FFB3D1" stroke-width="2.5" fill="none" stroke-dasharray="6 4" stroke-linecap="round"/>
+      <circle cx="8" cy="14" r="4" fill="#FF6B9D" opacity=".6"/>
+      <text x="44" y="70" font-size="20">💕</text>
+    </svg>
+
+    <!-- Nailong duo: normal + holding heart -->
+    <div style="display:flex;justify-content:center;gap:10px;align-items:flex-end;margin-bottom:8px">
+
+      <!-- Nailong Normal with bow -->
+      <div class="nl-wrap nl-float" onclick="playSound('pop');popSticker(this)">
+        <svg width="80" height="90" viewBox="0 0 120 130" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="60" cy="126" rx="29" ry="5" fill="#e8c000" opacity=".22"/>
+          <ellipse cx="60" cy="90" rx="37" ry="34" fill="#FFE033"/>
+          <ellipse cx="60" cy="97" rx="23" ry="20" fill="#FFF5A8" opacity=".5"/>
+          <circle cx="60" cy="48" r="37" fill="#FFE033"/>
+          <ellipse cx="52" cy="30" rx="14" ry="8" fill="#FFF8C0" opacity=".4"/>
+          <!-- eyes L -->
+          <ellipse cx="44" cy="45" rx="13" ry="14" fill="white"/>
+          <ellipse cx="44" cy="38" rx="13" ry="7" fill="#ddd" opacity=".3"/>
+          <circle cx="44" cy="47" r="9.5" fill="#1a1020"/>
+          <circle cx="44" cy="47" r="7.5" fill="#2a1838"/>
+          <circle cx="40" cy="42" r="3.8" fill="white"/>
+          <circle cx="49" cy="45" r="1.8" fill="white" opacity=".85"/>
+          <!-- eyes R -->
+          <ellipse cx="76" cy="45" rx="13" ry="14" fill="white"/>
+          <ellipse cx="76" cy="38" rx="13" ry="7" fill="#ddd" opacity=".3"/>
+          <circle cx="76" cy="47" r="9.5" fill="#1a1020"/>
+          <circle cx="76" cy="47" r="7.5" fill="#2a1838"/>
+          <circle cx="72" cy="42" r="3.8" fill="white"/>
+          <circle cx="81" cy="45" r="1.8" fill="white" opacity=".85"/>
+          <!-- lashes L -->
+          <line x1="36" y1="33" x2="34" y2="28" stroke="#444" stroke-width="1.6" stroke-linecap="round"/>
+          <line x1="41" y1="31" x2="40" y2="26" stroke="#444" stroke-width="1.6" stroke-linecap="round"/>
+          <line x1="47" y1="31" x2="47" y2="26" stroke="#444" stroke-width="1.6" stroke-linecap="round"/>
+          <!-- lashes R -->
+          <line x1="73" y1="31" x2="73" y2="26" stroke="#444" stroke-width="1.6" stroke-linecap="round"/>
+          <line x1="79" y1="31" x2="80" y2="26" stroke="#444" stroke-width="1.6" stroke-linecap="round"/>
+          <line x1="84" y1="33" x2="86" y2="28" stroke="#444" stroke-width="1.6" stroke-linecap="round"/>
+          <!-- blush -->
+          <ellipse cx="29" cy="55" rx="9" ry="6.5" fill="#FF9BBD" opacity=".55"/>
+          <ellipse cx="91" cy="55" rx="9" ry="6.5" fill="#FF9BBD" opacity=".55"/>
+          <!-- beak -->
+          <path d="M51 63 Q60 72 69 63 Q60 59 51 63Z" fill="#FF8C00"/>
+          <path d="M55 65 Q60 69 65 65" stroke="#e07000" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+          <!-- wings -->
+          <ellipse cx="19" cy="93" rx="15" ry="11" fill="#FFD000" transform="rotate(-28 19 93)"/>
+          <ellipse cx="16" cy="90" rx="7" ry="4.5" fill="#FFE566" opacity=".5" transform="rotate(-28 16 90)"/>
+          <ellipse cx="101" cy="93" rx="15" ry="11" fill="#FFD000" transform="rotate(28 101 93)"/>
+          <ellipse cx="104" cy="90" rx="7" ry="4.5" fill="#FFE566" opacity=".5" transform="rotate(28 104 90)"/>
+          <!-- feet -->
+          <ellipse cx="46" cy="122" rx="15" ry="6.5" fill="#FF8C00"/>
+          <ellipse cx="74" cy="122" rx="15" ry="6.5" fill="#FF8C00"/>
+          <line x1="35" y1="122" x2="31" y2="117" stroke="#e07000" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="39" y1="124" x2="36" y2="119" stroke="#e07000" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="63" y1="124" x2="62" y2="119" stroke="#e07000" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="85" y1="122" x2="89" y2="117" stroke="#e07000" stroke-width="1.5" stroke-linecap="round"/>
+          <!-- tummy heart -->
+          <path d="M52 90 C52 86 60 85 60 90 C60 85 68 86 68 90 C68 95 60 101 60 101 C60 101 52 95 52 90Z" fill="#FF6B9D" opacity=".45"/>
+          <!-- bow -->
+          <path d="M44 12 Q60 6 76 12 Q60 18 44 12Z" fill="#FF6B9D"/>
+          <circle cx="60" cy="12" r="4" fill="#E91E8C"/>
+        </svg>
+      </div>
+
+      <!-- Nailong holding heart -->
+      <div class="nl-wrap nl-dance" onclick="playSound('heart');popSticker(this)" style="animation-delay:.3s">
+        <svg width="78" height="88" viewBox="0 0 120 130" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="60" cy="126" rx="29" ry="5" fill="#e8c000" opacity=".22"/>
+          <ellipse cx="60" cy="90" rx="37" ry="34" fill="#FFE033"/>
+          <ellipse cx="60" cy="97" rx="23" ry="20" fill="#FFF5A8" opacity=".5"/>
+          <circle cx="60" cy="48" r="37" fill="#FFE033"/>
+          <ellipse cx="52" cy="30" rx="14" ry="8" fill="#FFF8C0" opacity=".4"/>
+          <!-- eyes happy -->
+          <ellipse cx="44" cy="45" rx="13" ry="14" fill="white"/>
+          <circle cx="44" cy="47" r="9.5" fill="#1a1020"/>
+          <circle cx="44" cy="47" r="7.5" fill="#2a1838"/>
+          <circle cx="40" cy="42" r="3.8" fill="white"/>
+          <circle cx="49" cy="45" r="1.8" fill="white" opacity=".85"/>
+          <ellipse cx="76" cy="45" rx="13" ry="14" fill="white"/>
+          <circle cx="76" cy="47" r="9.5" fill="#1a1020"/>
+          <circle cx="76" cy="47" r="7.5" fill="#2a1838"/>
+          <circle cx="72" cy="42" r="3.8" fill="white"/>
+          <circle cx="81" cy="45" r="1.8" fill="white" opacity=".85"/>
+          <!-- smile -->
+          <path d="M48 62 Q60 72 72 62" stroke="#e07000" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <!-- lashes -->
+          <line x1="36" y1="33" x2="34" y2="28" stroke="#444" stroke-width="1.6" stroke-linecap="round"/>
+          <line x1="41" y1="31" x2="40" y2="26" stroke="#444" stroke-width="1.6" stroke-linecap="round"/>
+          <line x1="47" y1="31" x2="47" y2="26" stroke="#444" stroke-width="1.6" stroke-linecap="round"/>
+          <line x1="73" y1="31" x2="73" y2="26" stroke="#444" stroke-width="1.6" stroke-linecap="round"/>
+          <line x1="79" y1="31" x2="80" y2="26" stroke="#444" stroke-width="1.6" stroke-linecap="round"/>
+          <line x1="84" y1="33" x2="86" y2="28" stroke="#444" stroke-width="1.6" stroke-linecap="round"/>
+          <ellipse cx="29" cy="55" rx="9" ry="6.5" fill="#FF9BBD" opacity=".55"/>
+          <ellipse cx="91" cy="55" rx="9" ry="6.5" fill="#FF9BBD" opacity=".55"/>
+          <path d="M51 63 Q60 72 69 63 Q60 59 51 63Z" fill="#FF8C00"/>
+          <!-- wings raised holding heart -->
+          <ellipse cx="15" cy="78" rx="14" ry="10" fill="#FFD000" transform="rotate(-52 15 78)"/>
+          <ellipse cx="12" cy="74" rx="6" ry="4" fill="#FFE566" opacity=".5" transform="rotate(-52 12 74)"/>
+          <ellipse cx="105" cy="78" rx="14" ry="10" fill="#FFD000" transform="rotate(52 105 78)"/>
+          <ellipse cx="108" cy="74" rx="6" ry="4" fill="#FFE566" opacity=".5" transform="rotate(52 108 74)"/>
+          <ellipse cx="46" cy="122" rx="15" ry="6.5" fill="#FF8C00"/>
+          <ellipse cx="74" cy="122" rx="15" ry="6.5" fill="#FF8C00"/>
+          <line x1="35" y1="122" x2="31" y2="117" stroke="#e07000" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="85" y1="122" x2="89" y2="117" stroke="#e07000" stroke-width="1.5" stroke-linecap="round"/>
+          <!-- big held heart -->
+          <path d="M47 4 C47 -3 55 -5 60 1 C65 -5 73 -3 73 4 C73 13 60 22 60 22 C60 22 47 13 47 4Z" fill="#FF4D6D"/>
+          <ellipse cx="55" cy="4" rx="5" ry="3.5" fill="#FF8FAD" opacity=".5"/>
+        </svg>
+      </div>
+    </div>
+
+    <h1>Hei, Luna Arabela~</h1>
+    <p class="subtitle">Ada aku & si Nailong kecil yang mau ngomong sesuatu ke kamu 🐥💕</p>
+
+    <div class="love-text">
+      "Dari sekian banyak orang di dunia ini,<br>
+      aku paling suka kalau yang ada di sisiku itu kamu.<br>
+      Setiap hari terasa lebih ringan karena<br>
+      tahu ada kamu di ujungnya 🌸"
+    </div>
+
+    <!-- wave doodle -->
+    <div style="display:flex;justify-content:center;gap:9px;margin:8px 0 14px;align-items:center">
+      <svg width="26" height="26" viewBox="0 0 26 26"><path d="M3 17 Q13 3 23 17 Q18 24 13 26 Q8 24 3 17Z" fill="#FF6B9D" opacity=".3"/></svg>
+      <svg width="34" height="16" viewBox="0 0 34 16"><path d="M2 8 Q9 2 17 8 Q25 14 32 8" stroke="#FFB3D1" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg>
+      <svg width="20" height="20" viewBox="0 0 20 20"><polygon points="10,1 12,7 19,7 14,11 16,18 10,14 4,18 6,11 1,7 8,7" fill="#FFD166" opacity=".85"/></svg>
+      <svg width="34" height="16" viewBox="0 0 34 16"><path d="M2 8 Q9 14 17 8 Q25 2 32 8" stroke="#FFB3D1" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg>
+      <svg width="26" height="26" viewBox="0 0 26 26"><path d="M3 17 Q13 3 23 17 Q18 24 13 26 Q8 24 3 17Z" fill="#FF6B9D" opacity=".3"/></svg>
+    </div>
+
+    <div class="naylon-pack">
+      <div class="stickers-row">
+        <span class="sticker-naylon" onclick="playSound('pop');popSticker(this)">🐥 Nailong</span>
+        <span class="sticker-naylon" onclick="playSound('pop');popSticker(this)">🌺 Cantik</span>
+        <span class="sticker-naylon" onclick="playSound('pop');popSticker(this)">💖 Lucu</span>
+        <span class="sticker-naylon" onclick="playSound('pop');popSticker(this)">🌙 Bintangku</span>
+        <span class="sticker-naylon" onclick="playSound('pop');popSticker(this)">🍓 Manis</span>
+        <span class="sticker-naylon" onclick="playSound('pop');popSticker(this)">🦋 Spesial</span>
+      </div>
+    </div>
+    <button class="btn btn-pink" onclick="goToScreen(2);playSound('heart')" style="margin-top:16px">Buka Suratnya 💌</button>
+  </div>
+</div>
+
+
+<!-- ===================== SCREEN 2 — SURAT ===================== -->
+<div class="screen" id="screen2">
+  <div class="card">
+    <svg class="doodle-c dc-tr" width="72" height="58" viewBox="0 0 72 58">
+      <path d="M4 53 Q38 4 68 16" stroke="#FFCCDF" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-dasharray="5 3"/>
+      <circle cx="68" cy="16" r="3.5" fill="#FF6B9D" opacity=".5"/>
+      <text x="48" y="54" font-size="16">✨</text>
+    </svg>
+
+    <div id="envelopeArea" style="cursor:pointer" onclick="openEnvelope()">
+      <div class="envelope" id="envelope">💌</div>
+      <p style="font-size:.77rem;color:#ccc;margin-top:4px">✨ tap amplop untuk buka!</p>
+    </div>
+
+    <div id="letterContent" style="display:none">
+      <!-- Nailong postman with hat -->
+      <div style="display:flex;justify-content:center;margin-bottom:8px">
+        <div class="nl-wrap nl-float" onclick="playSound('pop')">
+          <svg width="68" height="76" viewBox="0 0 120 130" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="60" cy="126" rx="29" ry="5" fill="#e8c000" opacity=".22"/>
+            <ellipse cx="60" cy="90" rx="37" ry="34" fill="#FFE033"/>
+            <ellipse cx="60" cy="97" rx="23" ry="20" fill="#FFF5A8" opacity=".5"/>
+            <circle cx="60" cy="48" r="37" fill="#FFE033"/>
+            <ellipse cx="52" cy="30" rx="14" ry="8" fill="#FFF8C0" opacity=".4"/>
+            <ellipse cx="44" cy="45" rx="13" ry="14" fill="white"/>
+            <circle cx="44" cy="47" r="9.5" fill="#1a1020"/>
+            <circle cx="44" cy="47" r="7.5" fill="#2a1838"/>
+            <circle cx="40" cy="42" r="3.8" fill="white"/>
+            <circle cx="49" cy="45" r="1.8" fill="white" opacity=".85"/>
+            <ellipse cx="76" cy="45" rx="13" ry="14" fill="white"/>
+            <circle cx="76" cy="47" r="9.5" fill="#1a1020"/>
+            <circle cx="76" cy="47" r="7.5" fill="#2a1838"/>
+            <circle cx="72" cy="42" r="3.8" fill="white"/>
+            <circle cx="81" cy="45" r="1.8" fill="white" opacity=".85"/>
+            <!-- wink right -->
+            <path d="M70 57 Q76 62 82 57" stroke="#e07000" stroke-width="2" fill="none" stroke-linecap="round"/>
+            <line x1="36" y1="33" x2="34" y2="28" stroke="#444" stroke-width="1.6" stroke-linecap="round"/>
+            <line x1="41" y1="31" x2="40" y2="26" stroke="#444" stroke-width="1.6" stroke-linecap="round"/>
+            <line x1="47" y1="31" x2="47" y2="26" stroke="#444" stroke-width="1.6" stroke-linecap="round"/>
+            <line x1="73" y1="31" x2="73" y2="26" stroke="#444" stroke-width="1.6" stroke-linecap="round"/>
+            <line x1="79" y1="31" x2="80" y2="26" stroke="#444" stroke-width="1.6" stroke-linecap="round"/>
+            <line x1="84" y1="33" x2="86" y2="28" stroke="#444" stroke-width="1.6" stroke-linecap="round"/>
+            <ellipse cx="29" cy="55" rx="9" ry="6.5" fill="#FF9BBD" opacity=".55"/>
+            <ellipse cx="91" cy="55" rx="9" ry="6.5" fill="#FF9BBD" opacity=".55"/>
+            <path d="M51 63 Q60 72 69 63 Q60 59 51 63Z" fill="#FF8C00"/>
+            <ellipse cx="19" cy="93" rx="15" ry="11" fill="#FFD000" transform="rotate(-28 19 93)"/>
+            <ellipse cx="101" cy="93" rx="15" ry="11" fill="#FFD000" transform="rotate(28 101 93)"/>
+            <ellipse cx="46" cy="122" rx="15" ry="6.5" fill="#FF8C00"/>
+            <ellipse cx="74" cy="122" rx="15" ry="6.5" fill="#FF8C00"/>
+            <!-- hat -->
+            <rect x="36" y="12" width="48" height="10" rx="5" fill="#FF6B9D"/>
+            <rect x="42" y="4" width="36" height="10" rx="5" fill="#FF6B9D"/>
+            <line x1="38" y1="12" x2="82" y2="12" stroke="#E91E8C" stroke-width="1.5"/>
+          </svg>
+        </div>
+      </div>
+
+      <h2>Luna Arabela 💕</h2>
+      <div class="love-text">
+        "Selamat Hari Valentine, sayang~ 🌸<br><br>
+        Kamu itu bukan cuma pacar. Kamu adalah orang yang bikin
+        aku mau bangun pagi dengan semangat — orang yang aku
+        cari saat ada hal lucu maupun saat hari terasa paling berat.<br><br>
+        Di antara semua momen hidupku, momen sama kamu
+        adalah yang paling ingin aku kenang selamanya 🥹"
+      </div>
+      <div class="love-text" style="border-left-color:var(--purple);font-size:1.05rem">
+        "Terima kasih sudah ada, sudah sabar, sudah mau jadi
+        rumah yang paling nyaman buat aku pulang.<br><br>
+        Kamu bukan kebetulan — kamu adalah jawaban dari
+        doa yang bahkan belum aku tahu cara memintanya 💫"
+      </div>
+
+      <div style="display:flex;justify-content:center;gap:8px;margin:10px 0">
+        <svg width="22" height="22" viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 16,14 18,21 12,17 6,21 8,14 2,9 9,9" fill="#FFD166" stroke="#FFB300" stroke-width="1"/></svg>
+        <svg width="16" height="16" viewBox="0 0 24 24" style="margin-top:4px"><polygon points="12,2 15,9 22,9 16,14 18,21 12,17 6,21 8,14 2,9 9,9" fill="#FF6B9D"/></svg>
+        <svg width="22" height="22" viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 16,14 18,21 12,17 6,21 8,14 2,9 9,9" fill="#FFD166" stroke="#FFB300" stroke-width="1"/></svg>
+      </div>
+      <div class="stickers-row"><span class="sticker-badge">Happy Valentine's Day 💗</span></div>
+
+      <div style="margin-top:18px;display:flex;gap:11px;justify-content:center;flex-wrap:wrap">
+        <button class="btn btn-outline" onclick="goToScreen(1)">← Kembali</button>
+        <button class="btn btn-pink" onclick="goToScreen(3);playSound('bell')">Lanjut ke Games 🎮</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ===================== SCREEN 3 — BIG QUESTION ===================== -->
+<div class="screen" id="screen3">
+  <div class="card">
+    <!-- Nailong teary/pleading -->
+    <div style="display:flex;justify-content:center;margin-bottom:6px">
+      <div class="nl-wrap nl-shake" id="nailongPleading" onclick="playSound('pop')">
+        <svg width="92" height="104" viewBox="0 0 120 130" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="60" cy="126" rx="29" ry="5" fill="#e8c000" opacity=".22"/>
+          <ellipse cx="60" cy="90" rx="37" ry="34" fill="#FFE033"/>
+          <ellipse cx="60" cy="97" rx="23" ry="20" fill="#FFF5A8" opacity=".5"/>
+          <circle cx="60" cy="48" r="37" fill="#FFE033"/>
+          <ellipse cx="52" cy="30" rx="14" ry="8" fill="#FFF8C0" opacity=".4"/>
+          <!-- BIG teary eyes -->
+          <ellipse cx="43" cy="44" rx="15" ry="16" fill="white"/>
+          <ellipse cx="43" cy="36" rx="15" ry="8" fill="#ddd" opacity=".3"/>
+          <circle cx="43" cy="47" r="11" fill="#1a1020"/>
+          <circle cx="43" cy="47" r="8.5" fill="#2a1838"/>
+          <circle cx="38" cy="41" r="4.5" fill="white"/>
+          <circle cx="49" cy="45" r="2.2" fill="white" opacity=".85"/>
+          <!-- tear L -->
+          <ellipse cx="37" cy="62" rx="3.5" ry="5.5" fill="#87CEEB" opacity=".8"/>
+          <ellipse cx="35" cy="68" rx="2.5" ry="3.5" fill="#87CEEB" opacity=".5"/>
+          <ellipse cx="77" cy="44" rx="15" ry="16" fill="white"/>
+          <ellipse cx="77" cy="36" rx="15" ry="8" fill="#ddd" opacity=".3"/>
+          <circle cx="77" cy="47" r="11" fill="#1a1020"/>
+          <circle cx="77" cy="47" r="8.5" fill="#2a1838"/>
+          <circle cx="72" cy="41" r="4.5" fill="white"/>
+          <circle cx="83" cy="45" r="2.2" fill="white" opacity=".85"/>
+          <!-- tear R -->
+          <ellipse cx="83" cy="62" rx="3.5" ry="5.5" fill="#87CEEB" opacity=".8"/>
+          <ellipse cx="85" cy="68" rx="2.5" ry="3.5" fill="#87CEEB" opacity=".5"/>
+          <!-- lashes -->
+          <line x1="34" y1="30" x2="32" y2="25" stroke="#444" stroke-width="1.6" stroke-linecap="round"/>
+          <line x1="40" y1="28" x2="39" y2="23" stroke="#444" stroke-width="1.6" stroke-linecap="round"/>
+          <line x1="46" y1="28" x2="46" y2="23" stroke="#444" stroke-width="1.6" stroke-linecap="round"/>
+          <line x1="74" y1="28" x2="74" y2="23" stroke="#444" stroke-width="1.6" stroke-linecap="round"/>
+          <line x1="80" y1="28" x2="81" y2="23" stroke="#444" stroke-width="1.6" stroke-linecap="round"/>
+          <line x1="86" y1="30" x2="88" y2="25" stroke="#444" stroke-width="1.6" stroke-linecap="round"/>
+          <ellipse cx="28" cy="56" rx="9.5" ry="7" fill="#FF9BBD" opacity=".6"/>
+          <ellipse cx="92" cy="56" rx="9.5" ry="7" fill="#FF9BBD" opacity=".6"/>
+          <!-- sad beak -->
+          <path d="M51 68 Q60 62 69 68 Q60 65 51 68Z" fill="#FF8C00"/>
+          <ellipse cx="19" cy="93" rx="15" ry="11" fill="#FFD000" transform="rotate(-28 19 93)"/>
+          <ellipse cx="101" cy="93" rx="15" ry="11" fill="#FFD000" transform="rotate(28 101 93)"/>
+          <ellipse cx="46" cy="122" rx="15" ry="6.5" fill="#FF8C00"/>
+          <ellipse cx="74" cy="122" rx="15" ry="6.5" fill="#FF8C00"/>
+          <line x1="35" y1="122" x2="31" y2="117" stroke="#e07000" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="85" y1="122" x2="89" y2="117" stroke="#e07000" stroke-width="1.5" stroke-linecap="round"/>
+          <!-- cracked heart tummy -->
+          <path d="M52 90 C52 86 60 85 60 90 C60 85 68 86 68 90 C68 95 60 101 60 101 C60 101 52 95 52 90Z" fill="#FF6B9D" opacity=".45"/>
+          <line x1="60" y1="85" x2="58" y2="99" stroke="white" stroke-width="1.3" opacity=".5"/>
+        </svg>
+      </div>
+    </div>
+
+    <svg style="position:absolute;top:14px;right:16px;pointer-events:none;opacity:.5" width="42" height="42" viewBox="0 0 42 42">
+      <line x1="21" y1="4" x2="21" y2="12" stroke="#FFD166" stroke-width="2" stroke-linecap="round"/>
+      <line x1="21" y1="30" x2="21" y2="38" stroke="#FFD166" stroke-width="2" stroke-linecap="round"/>
+      <line x1="4" y1="21" x2="12" y2="21" stroke="#FFD166" stroke-width="2" stroke-linecap="round"/>
+      <line x1="30" y1="21" x2="38" y2="21" stroke="#FFD166" stroke-width="2" stroke-linecap="round"/>
+      <circle cx="21" cy="21" r="5" fill="#FFD166" opacity=".7"/>
+    </svg>
+
+    <h2>Pertanyaan Paling Penting!!</h2>
+    <p class="question-text" style="font-size:1.08rem;line-height:1.6;color:var(--dark)">
+      Kamu sayang ga sama aku? 🥺<br>
+      <span style="font-size:.83rem;color:#ccc;font-weight:600">(pilih dengan jujur ya~)</span>
+    </p>
+
+    <div class="love-q-wrap">
+      <button class="btn btn-yes" onclick="sayYes()" id="btnYes">Iya sayang banget 💖</button>
+    </div>
+    <p id="noCounter" style="font-size:.72rem;color:#ddd;margin-top:6px">tombol "tidak" sudah kabur <span id="noCount">0</span>x 😏</p>
+  </div>
+</div>
+
+<button id="btnNo" onclick="runAway()">Tidak 😤</button>
+
+
+<!-- ===================== SCREEN 4 — GAME ===================== -->
+<div class="screen" id="screen4">
+  <div class="card">
+    <svg class="doodle-c dc-tl" width="62" height="62" viewBox="0 0 62 62">
+      <path d="M58 58 Q7 40 7 7" stroke="#FFB3D1" stroke-width="2.5" fill="none" stroke-dasharray="5 4" stroke-linecap="round"/>
+      <text x="36" y="60" font-size="17">🌸</text>
+    </svg>
+    <svg class="doodle-c dc-br" width="62" height="62" viewBox="0 0 62 62">
+      <path d="M4 4 Q55 22 55 55" stroke="#FFB3D1" stroke-width="2.5" fill="none" stroke-dasharray="5 4" stroke-linecap="round"/>
+      <text x="4" y="22" font-size="17">✨</text>
+    </svg>
+
+    <div class="progress-label" id="progressLabel">Soal 1 dari 5</div>
+    <div class="progress-wrap"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+    <div style="font-size:.8rem;color:#FF6B9D;font-weight:700;margin-bottom:6px;background:#fff0f8;border-radius:10px;padding:6px 12px">
+      ⚠️ Jawab jujur ya, si Nailong lagi ngawasin 👀🐥
+    </div>
+    <span class="q-emoji" id="qEmoji">🤔</span>
+    <div class="question-num" id="questionNum">PERTANYAAN 1</div>
+    <div class="question-text" id="questionText">Loading...</div>
+    <div class="answers-grid" id="answersGrid"></div>
+    <div class="feedback" id="feedbackMsg"></div>
+    <div id="nextBtnWrap" style="margin-top:14px;display:none">
+      <button class="btn btn-pink" onclick="nextQuestion()">Lanjut ➡️</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- ===================== SCREEN 5 — HASIL ===================== -->
+<div class="screen" id="screen5">
+  <div class="card">
+    <!-- Nailong party hat -->
+    <div style="display:flex;justify-content:center;margin-bottom:6px">
+      <div class="nl-wrap nl-dance" onclick="playSound('win')">
+        <svg width="74" height="84" viewBox="0 0 120 130" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="60" cy="126" rx="29" ry="5" fill="#e8c000" opacity=".22"/>
+          <ellipse cx="60" cy="90" rx="37" ry="34" fill="#FFE033"/>
+          <ellipse cx="60" cy="97" rx="23" ry="20" fill="#FFF5A8" opacity=".5"/>
+          <circle cx="60" cy="48" r="37" fill="#FFE033"/>
+          <ellipse cx="52" cy="30" rx="14" ry="8" fill="#FFF8C0" opacity=".4"/>
+          <!-- happy closed-arc eyes -->
+          <ellipse cx="44" cy="45" rx="13" ry="14" fill="white"/>
+          <circle cx="44" cy="47" r="9.5" fill="#1a1020"/>
+          <circle cx="44" cy="47" r="7.5" fill="#2a1838"/>
+          <circle cx="40" cy="42" r="3.8" fill="white"/>
+          <circle cx="49" cy="45" r="1.8" fill="white" opacity=".85"/>
+          <ellipse cx="76" cy="45" rx="13" ry="14" fill="white"/>
+          <circle cx="76" cy="47" r="9.5" fill="#1a1020"/>
+          <circle cx="76" cy="47" r="7.5" fill="#2a1838"/>
+          <circle cx="72" cy="42" r="3.8" fill="white"/>
+          <circle cx="81" cy="45" r="1.8" fill="white" opacity=".85"/>
+          <!-- big smile -->
+          <path d="M46 63 Q60 75 74 63" stroke="#e07000" stroke-width="2.8" fill="none" stroke-linecap="round"/>
+          <path d="M51 63 Q60 72 69 63 Q60 59 51 63Z" fill="#FF8C00"/>
+          <line x1="36" y1="33" x2="34" y2="28" stroke="#444" stroke-width="1.6" stroke-linecap="round"/>
+          <line x1="41" y1="31" x2="40" y2="26" stroke="#444" stroke-width="1.6" stroke-linecap="round"/>
+          <line x1="47" y1="31" x2="47" y2="26" stroke="#444" stroke-width="1.6" stroke-linecap="round"/>
+          <line x1="73" y1="31" x2="73" y2="26" stroke="#444" stroke-width="1.6" stroke-linecap="round"/>
+          <line x1="79" y1="31" x2="80" y2="26" stroke="#444" stroke-width="1.6" stroke-linecap="round"/>
+          <line x1="84" y1="33" x2="86" y2="28" stroke="#444" stroke-width="1.6" stroke-linecap="round"/>
+          <ellipse cx="29" cy="55" rx="9" ry="6.5" fill="#FF9BBD" opacity=".55"/>
+          <ellipse cx="91" cy="55" rx="9" ry="6.5" fill="#FF9BBD" opacity=".55"/>
+          <!-- wings up -->
+          <ellipse cx="15" cy="80" rx="14" ry="10" fill="#FFD000" transform="rotate(-55 15 80)"/>
+          <ellipse cx="105" cy="80" rx="14" ry="10" fill="#FFD000" transform="rotate(55 105 80)"/>
+          <ellipse cx="46" cy="122" rx="15" ry="6.5" fill="#FF8C00"/>
+          <ellipse cx="74" cy="122" rx="15" ry="6.5" fill="#FF8C00"/>
+          <line x1="35" y1="122" x2="31" y2="117" stroke="#e07000" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="85" y1="122" x2="89" y2="117" stroke="#e07000" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M52 90 C52 86 60 85 60 90 C60 85 68 86 68 90 C68 95 60 101 60 101 C60 101 52 95 52 90Z" fill="#FF6B9D" opacity=".45"/>
+          <!-- party hat -->
+          <polygon points="60,5 42,24 78,24" fill="#FF6B9D"/>
+          <line x1="42" y1="24" x2="78" y2="24" stroke="#E91E8C" stroke-width="1.5"/>
+          <circle cx="60" cy="5" r="3" fill="#FFD166"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="score-circle"><span class="num" id="finalScore">0</span><span class="lbl">/ 5 bener</span></div>
+    <h2 id="resultTitle">Hasilnya...</h2>
+    <p class="subtitle" id="resultMsg">Loading...</p>
+
+    <div class="naylon-pack" id="rewardStickers">
+      <div class="stickers-row" id="stickerReward"></div>
+    </div>
+
+    <svg width="100%" height="22" viewBox="0 0 300 22" preserveAspectRatio="none" style="margin:6px 0">
+      <path d="M0 11 Q75 3 150 11 Q225 19 300 11" stroke="#FFB3D1" stroke-width="2" fill="none"/>
+      <circle cx="50" cy="6" r="3" fill="#FF6B9D" opacity=".6"/>
+      <circle cx="150" cy="11" r="3" fill="#FFD166" opacity=".6"/>
+      <circle cx="250" cy="16" r="3" fill="#C77DFF" opacity=".6"/>
+    </svg>
+
+    <div class="polaroid" style="margin:10px auto">
+      <div class="polaroid-inner">
+        <!-- mini nailong in polaroid -->
+        <svg width="70" height="80" viewBox="0 0 120 130">
+          <ellipse cx="60" cy="90" rx="37" ry="34" fill="#FFE033"/>
+          <ellipse cx="60" cy="97" rx="23" ry="20" fill="#FFF5A8" opacity=".5"/>
+          <circle cx="60" cy="48" r="37" fill="#FFE033"/>
+          <ellipse cx="44" cy="45" rx="12" ry="13" fill="white"/>
+          <circle cx="44" cy="47" r="8.5" fill="#1a1020"/>
+          <circle cx="44" cy="47" r="6.5" fill="#2a1838"/>
+          <circle cx="40" cy="42" r="3.2" fill="white"/>
+          <ellipse cx="76" cy="45" rx="12" ry="13" fill="white"/>
+          <circle cx="76" cy="47" r="8.5" fill="#1a1020"/>
+          <circle cx="76" cy="47" r="6.5" fill="#2a1838"/>
+          <circle cx="72" cy="42" r="3.2" fill="white"/>
+          <ellipse cx="29" cy="55" rx="8" ry="6" fill="#FF9BBD" opacity=".55"/>
+          <ellipse cx="91" cy="55" rx="8" ry="6" fill="#FF9BBD" opacity=".55"/>
+          <path d="M51 63 Q60 72 69 63 Q60 59 51 63Z" fill="#FF8C00"/>
+          <ellipse cx="19" cy="93" rx="14" ry="10" fill="#FFD000" transform="rotate(-28 19 93)"/>
+          <ellipse cx="101" cy="93" rx="14" ry="10" fill="#FFD000" transform="rotate(28 101 93)"/>
+          <ellipse cx="46" cy="122" rx="14" ry="6" fill="#FF8C00"/>
+          <ellipse cx="74" cy="122" rx="14" ry="6" fill="#FF8C00"/>
+          <path d="M29 8 Q60 1 91 8 Q60 15 29 8Z" fill="#FF6B9D"/>
+          <circle cx="60" cy="8" r="4" fill="#E91E8C"/>
+        </svg>
+      </div>
+      <div class="polaroid-text">Luna & Nailong 💕</div>
+    </div>
+
+    <div style="margin-top:14px;display:flex;gap:11px;justify-content:center;flex-wrap:wrap">
+      <button class="btn btn-outline" onclick="restartGame()">Main Lagi 🔄</button>
+      <button class="btn btn-pink" onclick="goToScreen(6);playSound('win')">Hadiah Terakhir 🎁</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- ===================== SCREEN 6 — FINAL ===================== -->
+<div class="screen" id="screen6">
+  <div class="card">
+    <svg class="doodle-c dc-tr" width="75" height="75" viewBox="0 0 75 75">
+      <path d="M5 70 Q38 10 70 22" stroke="#FFB3D1" stroke-width="2.5" fill="none" stroke-dasharray="6 4" stroke-linecap="round"/>
+      <text x="50" y="72" font-size="20">🎊</text>
+    </svg>
+    <svg class="doodle-c dc-bl" width="75" height="75" viewBox="0 0 75 75">
+      <path d="M70 5 Q37 65 5 55" stroke="#FFB3D1" stroke-width="2.5" fill="none" stroke-dasharray="6 4" stroke-linecap="round"/>
+      <text x="8" y="22" font-size="20">💕</text>
+    </svg>
+
+    <!-- Triple Nailong celebration -->
+    <div style="display:flex;justify-content:center;gap:4px;align-items:flex-end;margin-bottom:10px">
+
+      <!-- Left - bow nailong float -->
+      <div class="nl-wrap nl-float" onclick="playSound('heart')">
+        <svg width="60" height="68" viewBox="0 0 120 130">
+          <ellipse cx="60" cy="126" rx="29" ry="5" fill="#e8c000" opacity=".2"/>
+          <ellipse cx="60" cy="90" rx="37" ry="34" fill="#FFE033"/>
+          <ellipse cx="60" cy="97" rx="23" ry="20" fill="#FFF5A8" opacity=".5"/>
+          <circle cx="60" cy="48" r="37" fill="#FFE033"/>
+          <ellipse cx="44" cy="45" rx="13" ry="14" fill="white"/>
+          <circle cx="44" cy="47" r="9.5" fill="#1a1020"/><circle cx="44" cy="47" r="7.5" fill="#2a1838"/>
+          <circle cx="40" cy="42" r="3.8" fill="white"/><circle cx="49" cy="45" r="1.8" fill="white" opacity=".85"/>
+          <ellipse cx="76" cy="45" rx="13" ry="14" fill="white"/>
+          <circle cx="76" cy="47" r="9.5" fill="#1a1020"/><circle cx="76" cy="47" r="7.5" fill="#2a1838"/>
+          <circle cx="72" cy="42" r="3.8" fill="white"/><circle cx="81" cy="45" r="1.8" fill="white" opacity=".85"/>
+          <path d="M48 63 Q60 72 72 63" stroke="#e07000" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <line x1="36" y1="33" x2="34" y2="28" stroke="#444" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="41" y1="31" x2="40" y2="26" stroke="#444" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="47" y1="31" x2="47" y2="26" stroke="#444" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="73" y1="31" x2="73" y2="26" stroke="#444" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="79" y1="31" x2="80" y2="26" stroke="#444" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="84" y1="33" x2="86" y2="28" stroke="#444" stroke-width="1.5" stroke-linecap="round"/>
+          <ellipse cx="29" cy="55" rx="9" ry="6.5" fill="#FF9BBD" opacity=".55"/>
+          <ellipse cx="91" cy="55" rx="9" ry="6.5" fill="#FF9BBD" opacity=".55"/>
+          <path d="M51 63 Q60 72 69 63 Q60 59 51 63Z" fill="#FF8C00"/>
+          <ellipse cx="19" cy="93" rx="15" ry="11" fill="#FFD000" transform="rotate(-28 19 93)"/>
+          <ellipse cx="101" cy="93" rx="15" ry="11" fill="#FFD000" transform="rotate(28 101 93)"/>
+          <ellipse cx="46" cy="122" rx="15" ry="6.5" fill="#FF8C00"/>
+          <ellipse cx="74" cy="122" rx="15" ry="6.5" fill="#FF8C00"/>
+          <path d="M44 12 Q60 6 76 12 Q60 18 44 12Z" fill="#FF6B9D"/>
+          <circle cx="60" cy="12" r="4" fill="#E91E8C"/>
+        </svg>
+      </div>
+
+      <!-- Center - crowned king nailong dance -->
+      <div class="nl-wrap nl-dance" onclick="playSound('win')" style="animation-delay:.1s">
+        <svg width="80" height="90" viewBox="0 0 120 130">
+          <ellipse cx="60" cy="126" rx="29" ry="5" fill="#e8c000" opacity=".22"/>
+          <ellipse cx="60" cy="90" rx="37" ry="34" fill="#FFE033"/>
+          <ellipse cx="60" cy="97" rx="23" ry="20" fill="#FFF5A8" opacity=".5"/>
+          <circle cx="60" cy="48" r="37" fill="#FFE033"/>
+          <ellipse cx="52" cy="30" rx="14" ry="8" fill="#FFF8C0" opacity=".4"/>
+          <ellipse cx="44" cy="45" rx="13" ry="14" fill="white"/>
+          <circle cx="44" cy="47" r="9.5" fill="#1a1020"/><circle cx="44" cy="47" r="7.5" fill="#2a1838"/>
+          <circle cx="40" cy="42" r="3.8" fill="white"/><circle cx="49" cy="45" r="1.8" fill="white" opacity=".85"/>
+          <ellipse cx="76" cy="45" rx="13" ry="14" fill="white"/>
+          <circle cx="76" cy="47" r="9.5" fill="#1a1020"/><circle cx="76" cy="47" r="7.5" fill="#2a1838"/>
+          <circle cx="72" cy="42" r="3.8" fill="white"/><circle cx="81" cy="45" r="1.8" fill="white" opacity=".85"/>
+          <path d="M46 63 Q60 75 74 63" stroke="#e07000" stroke-width="2.8" fill="none" stroke-linecap="round"/>
+          <path d="M51 63 Q60 72 69 63 Q60 59 51 63Z" fill="#FF8C00"/>
+          <line x1="36" y1="33" x2="34" y2="28" stroke="#444" stroke-width="1.6" stroke-linecap="round"/>
+          <line x1="41" y1="31" x2="40" y2="26" stroke="#444" stroke-width="1.6" stroke-linecap="round"/>
+          <line x1="47" y1="31" x2="47" y2="26" stroke="#444" stroke-width="1.6" stroke-linecap="round"/>
+          <line x1="73" y1="31" x2="73" y2="26" stroke="#444" stroke-width="1.6" stroke-linecap="round"/>
+          <line x1="79" y1="31" x2="80" y2="26" stroke="#444" stroke-width="1.6" stroke-linecap="round"/>
+          <line x1="84" y1="33" x2="86" y2="28" stroke="#444" stroke-width="1.6" stroke-linecap="round"/>
+          <ellipse cx="29" cy="55" rx="9" ry="6.5" fill="#FF9BBD" opacity=".55"/>
+          <ellipse cx="91" cy="55" rx="9" ry="6.5" fill="#FF9BBD" opacity=".55"/>
+          <ellipse cx="15" cy="80" rx="14" ry="10" fill="#FFD000" transform="rotate(-55 15 80)"/>
+          <ellipse cx="105" cy="80" rx="14" ry="10" fill="#FFD000" transform="rotate(55 105 80)"/>
+          <ellipse cx="46" cy="122" rx="15" ry="6.5" fill="#FF8C00"/>
+          <ellipse cx="74" cy="122" rx="15" ry="6.5" fill="#FF8C00"/>
+          <line x1="35" y1="122" x2="31" y2="117" stroke="#e07000" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="85" y1="122" x2="89" y2="117" stroke="#e07000" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M52 90 C52 86 60 85 60 90 C60 85 68 86 68 90 C68 95 60 101 60 101 C60 101 52 95 52 90Z" fill="#FF6B9D" opacity=".5"/>
+          <!-- crown -->
+          <path d="M34 16 L40 28 L50 20 L60 28 L70 20 L80 28 L86 16" fill="#FFD700" stroke="#FFA500" stroke-width="1.5" stroke-linejoin="round"/>
+          <circle cx="34" cy="16" r="3.5" fill="#FF6B9D"/>
+          <circle cx="60" cy="28" r="3.5" fill="#FF6B9D"/>
+          <circle cx="86" cy="16" r="3.5" fill="#FF6B9D"/>
+        </svg>
+      </div>
+
+      <!-- Right - bounce nailong -->
+      <div class="nl-wrap nl-bounce" onclick="playSound('bell')" style="animation-delay:.25s">
+        <svg width="60" height="68" viewBox="0 0 120 130">
+          <ellipse cx="60" cy="126" rx="29" ry="5" fill="#e8c000" opacity=".2"/>
+          <ellipse cx="60" cy="90" rx="37" ry="34" fill="#FFE033"/>
+          <ellipse cx="60" cy="97" rx="23" ry="20" fill="#FFF5A8" opacity=".5"/>
+          <circle cx="60" cy="48" r="37" fill="#FFE033"/>
+          <ellipse cx="44" cy="45" rx="13" ry="14" fill="white"/>
+          <circle cx="44" cy="47" r="9.5" fill="#1a1020"/><circle cx="44" cy="47" r="7.5" fill="#2a1838"/>
+          <circle cx="40" cy="42" r="3.8" fill="white"/><circle cx="49" cy="45" r="1.8" fill="white" opacity=".85"/>
+          <ellipse cx="76" cy="45" rx="13" ry="14" fill="white"/>
+          <circle cx="76" cy="47" r="9.5" fill="#1a1020"/><circle cx="76" cy="47" r="7.5" fill="#2a1838"/>
+          <circle cx="72" cy="42" r="3.8" fill="white"/><circle cx="81" cy="45" r="1.8" fill="white" opacity=".85"/>
+          <path d="M48 63 Q60 72 72 63" stroke="#e07000" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <line x1="36" y1="33" x2="34" y2="28" stroke="#444" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="41" y1="31" x2="40" y2="26" stroke="#444" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="47" y1="31" x2="47" y2="26" stroke="#444" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="73" y1="31" x2="73" y2="26" stroke="#444" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="79" y1="31" x2="80" y2="26" stroke="#444" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="84" y1="33" x2="86" y2="28" stroke="#444" stroke-width="1.5" stroke-linecap="round"/>
+          <ellipse cx="29" cy="55" rx="9" ry="6.5" fill="#FF9BBD" opacity=".55"/>
+          <ellipse cx="91" cy="55" rx="9" ry="6.5" fill="#FF9BBD" opacity=".55"/>
+          <path d="M51 63 Q60 72 69 63 Q60 59 51 63Z" fill="#FF8C00"/>
+          <ellipse cx="19" cy="93" rx="15" ry="11" fill="#FFD000" transform="rotate(-28 19 93)"/>
+          <ellipse cx="101" cy="93" rx="15" ry="11" fill="#FFD000" transform="rotate(28 101 93)"/>
+          <ellipse cx="46" cy="122" rx="15" ry="6.5" fill="#FF8C00"/>
+          <ellipse cx="74" cy="122" rx="15" ry="6.5" fill="#FF8C00"/>
+          <path d="M52 90 C52 86 60 85 60 90 C60 85 68 86 68 90 C68 95 60 101 60 101 C60 101 52 95 52 90Z" fill="#FF6B9D" opacity=".45"/>
+        </svg>
+      </div>
+    </div>
+
+    <h1>I Love You,<br>Luna Arabela! 💕</h1>
+
+    <div class="final-msg">
+      <div class="love-text" style="border-left-color:var(--purple);margin:0 0 10px">
+        "Makasih udah mau main games iseng si Nailong ini 🐥😆<br><br>
+        Kamu bukan sekadar seseorang yang aku pilih —<br>
+        kamu adalah seseorang yang aku syukuri setiap harinya."
+      </div>
+      <div class="love-text" style="border-left-color:var(--yellow);margin:0">
+        "Aku suka tawa kamu, aku suka sisi-sisi kamu
+        yang mungkin tidak banyak orang lihat.<br><br>
+        Setiap detik sama kamu adalah hadiah yang tidak
+        pernah aku minta, tapi selalu aku syukuri 🌸<br><br>
+        Happy Valentine's Day, Luna Arabela-ku sayang~ 💗"
+      </div>
+    </div>
+
+    <div class="naylon-pack" style="margin-top:14px">
+      <p style="font-size:.77rem;color:#bbb;margin-bottom:10px;font-weight:700">🎁 Koleksi Stiker Nailon Spesialmu</p>
+      <div class="stickers-row">
+        <span class="sticker-naylon" onclick="playSound('pop')">🐥 Nailong Forever</span>
+        <span class="sticker-naylon" onclick="playSound('pop')">💖 Best GF</span>
+        <span class="sticker-naylon" onclick="playSound('pop')">🌸 My Person</span>
+        <span class="sticker-naylon" onclick="playSound('pop')">🦋 Always</span>
+        <span class="sticker-naylon" onclick="playSound('pop')">💌 Valentine</span>
+        <span class="sticker-naylon" onclick="playSound('pop')">🍓 So Sweet</span>
+        <span class="sticker-naylon" onclick="playSound('pop')">⭐ My Star</span>
+        <span class="sticker-naylon" onclick="playSound('pop')">🌙 Endless</span>
+        <span class="sticker-naylon" onclick="playSound('pop')">🎀 Cutie</span>
+        <span class="sticker-naylon" onclick="playSound('pop')">🥰 Sayangku</span>
+      </div>
+    </div>
+
+    <div class="stickers-row" style="margin:12px 0">
+      <span class="sticker" onclick="playSound('heart');popSticker(this)">💗</span>
+      <span class="sticker" style="animation-delay:.2s" onclick="playSound('pop');popSticker(this)">🌺</span>
+      <span class="sticker" style="animation-delay:.4s" onclick="playSound('bell');popSticker(this)">🎊</span>
+      <span class="sticker" style="animation-delay:.6s" onclick="playSound('heart');popSticker(this)">💖</span>
+    </div>
+    <button class="btn btn-pink" onclick="launchConfetti();playSound('win')" style="font-size:1.05rem;padding:15px 38px">🎉 Celebrate!</button>
+  </div>
+</div>
+
+
+<!-- ======================== JAVASCRIPT ======================== -->
+<script>
+let actx;
+function initAudio(){if(!actx)actx=new(window.AudioContext||window.webkitAudioContext)();}
+function playSound(type){
+  try{
+    initAudio();if(actx.state==='suspended')actx.resume();
+    const t=actx.currentTime;
+    const osc=(f,tp,dur,vol,d=0)=>{
+      const o=actx.createOscillator(),g=actx.createGain();
+      o.connect(g);g.connect(actx.destination);o.type=tp;
+      o.frequency.setValueAtTime(f,t+d);g.gain.setValueAtTime(vol,t+d);
+      g.gain.exponentialRampToValueAtTime(0.001,t+d+dur);o.start(t+d);o.stop(t+d+dur);
+    };
+    if(type==='pop'){osc(900,'sine',.12,.3);osc(1300,'sine',.08,.18,.06);}
+    if(type==='heart'){[523,659,784,1047].forEach((f,i)=>osc(f,'sine',.3,.22,i*.08));}
+    if(type==='bell'){[1047,1319,1568].forEach((f,i)=>osc(f,'triangle',.4,.28,i*.1));}
+    if(type==='correct'){osc(523,'sine',.2,.28);osc(784,'sine',.28,.28,.15);}
+    if(type==='wrong'){osc(300,'sawtooth',.18,.28);osc(200,'sawtooth',.18,.22,.14);}
+    if(type==='win'){[523,659,784,1047,1319,1568,2093].forEach((f,i)=>osc(f,'sine',.3,.22,i*.065));}
+    if(type==='run'){osc(180,'square',.08,.18);osc(120,'square',.06,.12,.08);}
+  }catch(e){}
+}
+document.addEventListener('touchstart',()=>{try{initAudio();}catch(e){}},{passive:true,once:true});
+document.addEventListener('click',()=>{try{initAudio();}catch(e){}},{once:true});
+
+function goToScreen(n){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById('screen'+n).classList.add('active');
+  window.scrollTo(0,0);
+  if(n===4){if(!activeQuestions.length)shuffleQuestions();loadQuestion();}
+  if(n===3)showNoButton();
+  else hideNoButton();
+  if(n===6)setTimeout(launchConfetti,500);
+}
+
+// BG HEARTS
+const bg=document.getElementById('bgHearts');
+['💕','💗','💓','💖','🌸','✨','💫','🌺','🦋','⭐','🐥'].forEach(h=>{
+  for(let j=0;j<2;j++){
+    const el=document.createElement('span');el.className='bg-heart';el.textContent=h;
+    el.style.cssText=`left:${Math.random()*100}%;font-size:${.8+Math.random()*1.2}rem;animation-duration:${7+Math.random()*9}s;animation-delay:${Math.random()*10}s`;
+    bg.appendChild(el);
+  }
+});
+
+// ENVELOPE
+let envOpened=false;
+function openEnvelope(){
+  if(envOpened)return;envOpened=true;playSound('heart');
+  const env=document.getElementById('envelope');
+  env.style.cssText='transition:all .4s ease;transform:scale(0) rotate(20deg);opacity:0';
+  setTimeout(()=>{
+    document.getElementById('envelopeArea').style.display='none';
+    const lc=document.getElementById('letterContent');
+    lc.style.display='block';lc.style.animation='cardIn .5s cubic-bezier(0.34,1.56,0.64,1)';
+    playSound('bell');
+  },400);
+}
+
+// NO BUTTON — FULL SCREEN
+let noCount=0;
+const noTaunts=['Eh, kabur dulu~ 😏','Yakin mau pencet? 👀','Ga mungkin dong 🙈','Tangkep kalo bisa! 😜','Pasti sebenernya iya~ 💕','Tombolnya pemalu 😆','Hehe ketauan 🥺','Makin kecil loh! ✌️','Udah jangan dicari~ 🫣'];
+
+function showNoButton(){
+  const btn=document.getElementById('btnNo');
+  btn.style.display='block';
+  const vw=window.innerWidth,vh=window.innerHeight;
+  const bw=btn.offsetWidth||140,bh=btn.offsetHeight||48;
+  btn.style.left=Math.min(vw-bw-12,vw/2+90)+'px';
+  btn.style.top=Math.min(vh-bh-12,vh/2+50)+'px';
+  btn.style.transform='scale(1)';btn.style.opacity='1';
+  btn.textContent='Tidak 😤';noCount=0;
+  document.getElementById('noCount').textContent='0';
+}
+function hideNoButton(){document.getElementById('btnNo').style.display='none';}
+
+function runAway(){
+  playSound('run');noCount++;
+  document.getElementById('noCount').textContent=noCount;
+  const btn=document.getElementById('btnNo');
+  const vw=window.innerWidth,vh=window.innerHeight;
+  const bw=btn.offsetWidth||140,bh=btn.offsetHeight||48;
+  const cx=parseFloat(btn.style.left)||vw/2;
+  const cy=parseFloat(btn.style.top)||vh/2;
+  const margin=12;
+  let nx=cx,ny=cy,best=0;
+  for(let i=0;i<25;i++){
+    const tx=margin+Math.random()*(vw-bw-margin*2);
+    const ty=margin+Math.random()*(vh-bh-margin*2);
+    const dist=Math.hypot(tx-cx,ty-cy);
+    if(dist>best){best=dist;nx=tx;ny=ty;}
+  }
+  btn.style.transition='left .3s cubic-bezier(0.34,1.56,0.64,1),top .3s cubic-bezier(0.34,1.56,0.64,1)';
+  btn.style.left=nx+'px';btn.style.top=ny+'px';
+  const sc=Math.max(.45,1-noCount*.055);
+  const op=Math.max(.2,1-noCount*.09);
+  btn.style.transform=`scale(${sc})`;btn.style.opacity=op;
+  if(noCount>=3)btn.textContent=noTaunts[Math.min(noCount-1,noTaunts.length-1)];
+  if(noCount>=10)btn.style.display='none';
+  spawnSparkles(btn,3);
+}
+function sayYes(){
+  playSound('win');launchConfetti();hideNoButton();
+  const yb=document.getElementById('btnYes');
+  yb.textContent='Yaaay!! Makasih sayang 🎉💕';yb.style.fontSize='.95rem';
+  document.getElementById('nailongPleading').classList.remove('nl-shake');
+  document.getElementById('nailongPleading').classList.add('nl-dance');
+  setTimeout(()=>goToScreen(4),1500);
+}
+
+// MINI GAME
+const questions=[
+  {
+    emoji:'🤨',
+    q:'Siapa orang PALING ganteng / keren yang pernah kamu kenal?',
+    answers:['Pacar aku (yang lain)','Artis Korea oppa','Ya jelas kamu lah!!','Kucing tetangga'],
+    correct:2,
+    wrongMsg:'HADEH... serius?? 😭 Itu tuh jawabannya jelas banget!',
+    rightMsg:'NAAAH BETUL!! Syukurlah masih waras 😤💅'
+  },
+  {
+    emoji:'😤',
+    q:'Kamu lebih milih mana: aku atau HP kamu?',
+    answers:['HP dong, ga bisa hidup tanpa dia','Sama aja sih','Kamu lah sayang~~ 💕','Sebentar... aku pikir dulu'],
+    correct:2,
+    wrongMsg:'ASTAGA LUNA 😭😭 HP?? DIPIKIR DULU?? Aku pergi ya...',
+    rightMsg:'Oke jawaban yang benar! Tapi aku tetep curiga kamu mikir dulu 😒'
+  },
+  {
+    emoji:'🧐',
+    q:'Berapa kali kamu stalking profil aku hari ini?',
+    answers:['Ga pernah stalking 🙄','1-2 kali (bohong)','Banyak banget tapi ga bakal ngaku','Udah hafal semua foto kamu'],
+    correct:2,
+    wrongMsg:'OH PLEASE jangan pura-pura polos 😂 Aku tau kok~',
+    rightMsg:'Wkwkwk JUJUR BANGET... tapi makasih udah stalking 🥰'
+  },
+  {
+    emoji:'😏',
+    q:'Seberapa sering kamu kangen sama aku?',
+    answers:['Jarang sih, biasa aja','Lumayan lah','Setiap detik tapi malu ngakuin','Ga pernah (bohong besar)'],
+    correct:2,
+    wrongMsg:'BOHONG BANGET. Aku udah tau jawabannya dari ekspresi kamu 😏',
+    rightMsg:'AKHIRNYA NGAKU JUGA!! Aku juga kangen kamu tiap detik 🥹'
+  },
+  {
+    emoji:'🫵',
+    q:'Kalau aku tiba-tiba ngilang 1 hari ga kasih kabar, kamu gimana?',
+    answers:['Santai aja, mungkin sibuk','Biasa aja sih hehe','PANIK TOTAL. Langsung ngehubungin semua orang','Malah seneng bisa me-time'],
+    correct:2,
+    wrongMsg:'SANTAI?? BIASA AJA?? SENENG?? 😭 Aku mau nangis beneran nih...',
+    rightMsg:'HAHAHA betul banget dan kamu tau itu! Makanya jangan ngilang ya 😤💕'
+  },
+  {
+    emoji:'💅',
+    q:'Jujur deh, apa hal pertama yang kamu pikirin waktu bangun pagi?',
+    answers:['Mau sarapan apa ya','Aduh males bangun','Eh aku harus chat dia ga ya 🥺','Kerja/sekolah lagi deh'],
+    correct:2,
+    wrongMsg:'Hmm... SARAPAN?? Aku kalah sama nasi goreng?? 😤',
+    rightMsg:'ZUGZUG betul!! Makanya langsung chat aja jangan ditahan 😆💕'
+  },
+  {
+    emoji:'🎭',
+    q:'Pilih salah satu: aku atau tidur 12 jam?',
+    answers:['Tidur dong, penting banget','Tidur... tapi sambil mikirin kamu','Kamu lah, tidur kapanpun bisa','Ga bisa milih, dua-duanya penting'],
+    correct:2,
+    wrongMsg:'TIDUR?? Aku kalah sama bantal?? 😭 Oke fine. Oke. Fine. 😤',
+    rightMsg:'Jawaban yang bijak sekaligus romantis! Aku terharu... tapi kamu tetep tidur 12 jam kan? 😂'
+  },
+  {
+    emoji:'🔍',
+    q:'Berapa lama kamu baca chat aku sebelum bales?',
+    answers:['Langsung bales dong','5-10 menit baru bales','Dibaca dulu, dipikir kata-katanya, baru bales','Di-read trus kabur dulu hehe'],
+    correct:3,
+    wrongMsg:'LANGSUNG BALES?? SERIUS?? Terus kenapa kadang centang dua doang?? 🤨',
+    rightMsg:'HAHAHAHA KETAUAN DEH KEBIASAANNYA 😂 Tapi itu justru bikin aku tambah suka 🥰'
+  },
+];
+let curQ=0,score=0,answered=false;
+// Shuffle questions each game but keep first 5 random from 8
+let activeQuestions=[];
+function shuffleQuestions(){
+  const shuffled=[...questions].sort(()=>Math.random()-.5);
+  activeQuestions=shuffled.slice(0,5);
+}
+function loadQuestion(){
+  answered=false;const q=activeQuestions[curQ];
+  document.getElementById('qEmoji').textContent=q.emoji;
+  document.getElementById('questionNum').textContent=`PERTANYAAN ${curQ+1}`;
+  document.getElementById('questionText').textContent=q.q;
+  document.getElementById('progressLabel').textContent=`Soal ${curQ+1} dari ${activeQuestions.length}`;
+  document.getElementById('progressFill').style.width=((curQ/activeQuestions.length)*100)+'%';
+  const grid=document.getElementById('answersGrid');grid.innerHTML='';
+  // Shuffle answer order but track correct
+  const indices=[0,1,2,3];
+  const shuffledIdx=indices.sort(()=>Math.random()-.5);
+  let newCorrect=0;
+  shuffledIdx.forEach((origIdx,newIdx)=>{
+    const b=document.createElement('button');b.className='answer-btn';
+    b.textContent=q.answers[origIdx];
+    if(origIdx===q.correct) newCorrect=newIdx;
+    grid.appendChild(b);
+  });
+  const btns=grid.querySelectorAll('.answer-btn');
+  btns.forEach((b,i)=>b.onclick=()=>selectAnswer(i,newCorrect,q,b));
+  const fb=document.getElementById('feedbackMsg');fb.className='feedback';fb.textContent='';
+  document.getElementById('nextBtnWrap').style.display='none';
+}
+function selectAnswer(chosen,correct,q,clickedBtn){
+  if(answered)return;answered=true;
+  document.querySelectorAll('.answer-btn').forEach(b=>b.style.pointerEvents='none');
+  const fb=document.getElementById('feedbackMsg');
+  if(chosen===correct){
+    score++;clickedBtn.classList.add('correct');
+    fb.textContent='✅ '+q.rightMsg;fb.className='feedback correct show';
+    playSound('correct');spawnSparkles(clickedBtn);
+  }else{
+    clickedBtn.classList.add('wrong');
+    document.querySelectorAll('.answer-btn')[correct].classList.add('correct');
+    fb.textContent='😭 '+q.wrongMsg;fb.className='feedback wrong show';
+    playSound('wrong');
+    // Nailong shake on wrong answer
+    const nl=document.getElementById('nailongPleading');
+    if(nl){nl.style.animation='nlShake .4s ease 3';}
+  }
+  document.getElementById('nextBtnWrap').style.display='block';
+}
+function nextQuestion(){curQ++;if(curQ>=activeQuestions.length)showResult();else{loadQuestion();playSound('pop');}}
+function showResult(){
+  goToScreen(5);document.getElementById('finalScore').textContent=score;
+  const msgs=[
+    [0,0,'Aduh Luna... 😭','Kamu jawab semua salah?? Aku mau nangis di pojokan dulu 😤 (tapi tetep sayang kok)'],
+    [1,2,'Hmm... 🤨','Lumayan banyak yang salah nih~ Tapi aku maafin karena kamu lucu 😒💕'],
+    [3,4,'Oke lah~ 😏','Cukup bagus! Tapi masih ada yang salah loh, ayo diakui aja wkwk 🌸'],
+    [5,5,'SEMPURNAAAA!! 🎊🎊','KAMU JAWAB SEMUA BENER!! Bukti nyata kamu perhatian sama aku 💗💗💗 Mau nangis terharu nih!'],
+  ];
+  let title='',msg='';
+  for(const[min,max,t,m]of msgs){if(score>=min&&score<=max){title=t;msg=m;break;}}
+  document.getElementById('resultTitle').textContent=title;
+  document.getElementById('resultMsg').textContent=msg;
+  const stks=['💖','🌸','✨','💌','🎊','🦋','⭐','🌺','🐥'];
+  const wrap=document.getElementById('stickerReward');wrap.innerHTML='';
+  for(let i=0;i<Math.max(1,score+1);i++){
+    const sp=document.createElement('span');sp.className='sticker';sp.textContent=stks[i%stks.length];
+    sp.style.animationDelay=(i*.15)+'s';sp.onclick=function(){playSound('pop');popSticker(this);};
+    wrap.appendChild(sp);
+  }
+  if(score>=4){setTimeout(launchConfetti,300);playSound('win');}
+  else if(score<=1){
+    // Nailong crying reaction for low score
+    setTimeout(()=>{
+      const nl=document.querySelector('#screen5 .nl-wrap');
+      if(nl)nl.style.filter='drop-shadow(0 0 8px #87CEEB)';
+    },500);
+  }
+}
+function restartGame(){curQ=0;score=0;answered=false;shuffleQuestions();goToScreen(4);playSound('pop');}
+
+// CONFETTI
+function launchConfetti(){
+  const colors=['#FF6B9D','#FFD166','#06D6A0','#C77DFF','#FF4D6D','#FFB3C6','#87CEEB'];
+  const shapes=['🎊','💗','🌸','✨','💕','🎉','🐥'];
+  for(let i=0;i<75;i++){
+    setTimeout(()=>{
+      const c=document.createElement('div');c.className='confetti-piece';
+      c.style.cssText=`left:${Math.random()*100}vw;width:${6+Math.random()*10}px;height:${6+Math.random()*10}px;background:${colors[Math.floor(Math.random()*colors.length)]};border-radius:${Math.random()>.5?'50%':'2px'};animation-duration:${2+Math.random()*2}s;animation-delay:${Math.random()*.4}s;`;
+      document.body.appendChild(c);setTimeout(()=>c.remove(),5000);
+    },i*20);
+  }
+  for(let i=0;i<20;i++){
+    setTimeout(()=>{
+      const c=document.createElement('span');c.className='confetti-piece';
+      c.style.cssText=`left:${Math.random()*100}vw;background:none;font-size:${1+Math.random()*1.2}rem;animation-duration:${2.5+Math.random()*2}s;animation-delay:${Math.random()*.3}s;`;
+      c.textContent=shapes[Math.floor(Math.random()*shapes.length)];
+      document.body.appendChild(c);setTimeout(()=>c.remove(),5500);
+    },i*80);
+  }
+}
+
+// STICKER POP
+function popSticker(el){
+  el.style.cssText+='transform:scale(1.6) rotate(12deg);transition:transform .3s cubic-bezier(0.34,1.56,0.64,1)';
+  setTimeout(()=>{el.style.transform='';el.style.transition='';},420);
+  spawnSparkles(el);
+}
+
+// SPARKLES
+function spawnSparkles(el,n=5){
+  const rect=el.getBoundingClientRect();
+  const emojis=['✨','💖','🌸','⭐','💫','🎀','🐥','💕'];
+  for(let i=0;i<n;i++){
+    const sp=document.createElement('span');sp.className='sparkle';
+    sp.textContent=emojis[Math.floor(Math.random()*emojis.length)];
+    sp.style.left=(rect.left+rect.width/2+(Math.random()-.5)*90)+'px';
+    sp.style.top=(rect.top+(Math.random()-.5)*80)+'px';
+    sp.style.animationDelay=(i*.07)+'s';
+    document.body.appendChild(sp);setTimeout(()=>sp.remove(),900);
+  }
+}
+window.addEventListener('resize',()=>{if(document.getElementById('screen3').classList.contains('active'))showNoButton();});
+</script>
+</body>
+</html>
